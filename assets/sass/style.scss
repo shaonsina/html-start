@@ -1,0 +1,367 @@
+/*--------------------------------
+	Template Name: limpon
+	Template URI: http://
+	Description: 
+	Author: 
+	Author URI: 
+	Version: 1.0
+--------------------------------------*/
+
+/*--------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------
+1.0 Predefined
+2.0 Preloader
+----------------------------------------*/
+
+// ------------------
+// IMPORT FILES
+// ------------------
+@import 'base/variables';		//variables
+@import 'base/mixins';			//mixins
+
+
+/*------------------
+1.0 Predefined
+--------------------*/
+html,
+body {
+	color: $first_color;
+	font-family: $first_fonts;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 24px;
+}
+h1, .h1{
+	font-size: 60px;
+	line-height: 70px;
+}
+h2, .h2{
+	font-size: 40px;
+	line-height: 50px;
+}
+h3, .h3{
+	font-size: 30px;
+	line-height: 38px;
+	text-transform: capitalize;
+}
+h4, .h4{
+	font-size: 24px;
+	line-height: 30px;
+}
+h5, .h5{
+	font-size: 20px;
+	line-height: 24px;
+}
+h6, .h6{
+	font-size: 16px;
+	line-height: 20px;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	font-weight: bold;
+	margin: 0;
+}
+p{
+	&:last-child { margin-bottom: 0; }
+}
+ul{
+	margin:0;
+	padding:0;
+}
+li{ list-style: none; }
+a{
+	color: $first_link_color;
+
+	&,
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+		outline: none;
+		color: $first_link_hover_color;
+	}
+}
+button,
+a span { transition: 300ms ease-in-out; }
+.fix{ overflow: hidden; }
+.width-100{ width: 100%; }
+.height-100{ height: 100%; }
+.text-bold{ font-weight: bold; }
+.disabled{ cursor: not-allowed; }
+
+.section-title {
+	h2 {
+		color: $special_color;
+		display: table;
+		margin: 0 auto;
+		position: relative;
+		text-transform: uppercase;
+	}
+	p {
+		font-size: 15px;
+		margin-top: 30px;
+		text-align: center;
+		line-height: 30px;
+	}
+}
+.separator{
+	&:after {
+		border-left: 170px solid $special_color;
+		border-bottom: 4px solid transparent;
+		border-top: 4px solid transparent;
+		background: transparent;
+		position: absolute;
+		border-radius: 5px;
+		bottom: -10px;
+		content: "";
+		left: 10px;
+	}
+}
+.theme-btn {
+	@include first_btn_hover();
+
+	&:hover,
+	&:focus{
+		@include first_btn_hover();
+	}
+}
+.btn{
+	&:focus,
+	&:active {
+		outline: inherit;
+	}
+}
+.transition { transition: all 300ms linear; }
+.section {
+	padding-top:80px;
+	padding-bottom: 80px;
+}
+.overlay{
+	background-color: $first_over_hover_bg;
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height: 100%;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.form-control{
+	color: #444;
+	border:1px solid #444;
+	height: 32px;
+	border-radius: 0px;
+	font-size: 15px;
+	background: none;
+	border-radius: 4px;
+	padding: 8px;
+	font-weight: normal;
+	box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+.form-control:focus {
+	color: #444;
+	border-color: #444;
+	outline: 0;
+	box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+input::-webkit-input-placeholder {
+	color: #a0a0a0;
+	font-size: 15px;
+}
+input::-moz-placeholder {
+	color: #a0a0a0;
+	font-size: 15px;
+}
+input::-ms-input-placeholder {
+	color: #a0a0a0;
+	font-size: 15px;
+}
+input::placeholder {
+	color: #a0a0a0;
+	font-size: 15px;
+}
+textarea{
+	resize: vertical;
+	height: 200px;
+	width: 100%;
+}
+textarea::-webkit-input-placeholder{ color: #a0a0a0 !important; }
+textarea::-ms-input-placeholder{ color: #a0a0a0 !important; }
+textarea::-moz-placeholder{ color: #a0a0a0 !important; }
+textarea::placeholder{ color: #a0a0a0 !important; }
+
+/*---------------
+2.0 PRELODER
+----------------*/
+#preloader {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	background: #fff;
+}
+#preloader-inner {
+	position: absolute;
+	left: calc(50% - 50px);
+	top: calc(50% - 50px);
+	width: 100px;
+	height: 100px;
+
+	& > div{
+		position: absolute;
+		left: calc(50% - 10px);
+		top: calc(50% - 10px);
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: $special_color;
+
+		&:nth-child(1){ animation: hr-move 2s ease-in-out infinite; }
+		&:nth-child(2){ animation: hr-move2 2s ease-in-out infinite; }
+		&:nth-child(3){ animation: ver-move 2s ease-in-out infinite; }
+		&:nth-child(4){ animation: ver-move2 2s ease-in-out infinite; }
+	}
+}
+@keyframes hr-move {
+	0%, 100% { left: calc(100% - 20px); }
+	50% { left: 0; }
+}
+@keyframes hr-move2 {
+	0%, 100% { left: 0; }
+	50% { left: calc(100% - 20px); }
+}
+@keyframes ver-move {
+	0%, 100% { top: calc(100% - 20px); }
+	50% { top: 0; }
+}
+@keyframes ver-move2 {
+	0%, 100% { top: 0; }
+	50% { top: calc(100% - 20px); }
+}
+
+
+/*---------------
+3.0 HEADER
+----------------*/
+header{
+	background: url('../img/home-bg.png');
+	height: 1005px;
+}
+/*---------------
+3.1 Navigation
+----------------*/
+.sina-nav {
+	top: 45px;
+
+	.sina-brand > img{
+		padding: 1px 0;
+	}
+}
+
+
+
+
+/*----------------------
+MORE PREDEFINED
+------------------------*/
+.special-text{ color: $special_color !important; }
+.special-link{
+	color: $special_link_color !important;
+
+	&:hover,
+	&:focus{ color: $special_link_hover_color !important; }
+}
+
+.bg-img {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.no-bg{ background: none !important; }
+.no-border{ border:0 !important; }
+
+
+/* MARGIN
+====================================*/
+@include marpad(".m", "margin", 5, 30, 0);
+@include marpad(".m", "margin", 10, 60, 40);
+
+/* Margin-top */
+@include marpad(".mt", "margin-top", 5, 30, 0);
+@include marpad(".mt", "margin-top", 10, 100, 40);
+@include marpad(".mt", "margin-top", 20, 160, 120);
+
+/* Margin-bottom */
+@include marpad(".mb", "margin-bottom", 5, 30, 0);
+@include marpad(".mb", "margin-bottom", 10, 100, 40);
+@include marpad(".mb", "margin-bottom", 20, 160, 120);
+
+/* Margin-left */
+@include marpad(".ml", "margin-left", 5, 30, 0);
+@include marpad(".ml", "margin-left", 10, 60, 40);
+
+/* Margin-right */
+@include marpad(".mr", "margin-right", 5, 30, 0);
+@include marpad(".mr", "margin-right", 10, 60, 40);
+
+
+/* PADDING
+====================================*/
+@include marpad(".p", "padding", 5, 30, 0);
+@include marpad(".p", "padding", 10, 60, 40);
+
+/* Padding-top */
+@include marpad(".pt", "padding-top", 5, 30, 0);
+@include marpad(".pt", "padding-top", 10, 100, 40);
+@include marpad(".pt", "padding-top", 20, 160, 120);
+
+/* Padding-bottom */
+@include marpad(".pb", "padding-bottom", 5, 30, 0);
+@include marpad(".pb", "padding-bottom", 10, 100, 40);
+@include marpad(".pb", "padding-bottom", 20, 160, 120);
+
+/* Padding-left */
+@include marpad(".pl", "padding-left", 5, 30, 0);
+@include marpad(".pl", "padding-left", 10, 60, 40);
+
+/* Padding-right */
+@include marpad(".pr", "padding-right", 5, 30, 0);
+@include marpad(".pr", "padding-right", 10, 60, 40);
+
+
+/*Scroll Top Button*/
+#scrollTop {
+	display: none;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	cursor: pointer;
+	opacity: 0.7;
+	background: $special_color url(../img/arrow_up.png) center;
+	background-size: cover;
+	transition: opacity 0.3s ease-in-out 0s;
+
+	&:hover { opacity: 0.9; }
+}

@@ -1,0 +1,42 @@
+// ---------------------------
+// Variables
+// ---------------------------
+// Margin & Padding
+@mixin marpad($selector, $property, $unit, $until, $start) {
+	@for $i from 0 through round( ($until - $start) / $unit) {
+		#{$selector}-#{$i * $unit + $start} { #{$property}:#{$i * $unit + $start}px !important; }
+	}
+}
+
+
+// Buttons styles
+@mixin first_btn() {
+	color: #eee;
+	background: #1085e4;
+	min-width: 130px;
+	border-radius: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+@mixin first_btn_hover() {
+	color: #eee;
+	background: #005b7f;
+}
+
+@mixin second_btn() {
+	color: #222;
+	background: #05A6F1;
+}
+@mixin second_btn_hover() {
+	color: #222;
+	background: #005b7f;
+}
+
+@mixin special_btn() {
+	color: #222;
+	background: #05A6F1;
+}
+@mixin special_btn_hover() {
+	color: #222;
+	background: #005b7f;
+}
